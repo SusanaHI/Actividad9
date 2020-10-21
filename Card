@@ -1,0 +1,13 @@
+//Clase Card que representa una carta de póker.
+public class Card {
+	
+	String PALO;
+	String COLOR;
+	String VALOR;
+	
+	//Constructor
+	public Card() {
+		
+	}
+	
+}
