@@ -1,0 +1,91 @@
+import java.util.*;
+
+//Clase Deck que representa un conjunto de cartas de póker.
+public class Deck {
+
+	String [] Palo = {"Trebol", "Corazon", "Pica", "Diamante"};
+	String [] Valor = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "A", "J", "Q", "K"};
+	
+	//Arreglo BarCom
+	ArrayList<Card> BarCom = new ArrayList<Card>();
+	
+	//Constructor
+	public Deck() {
+		
+	}
+	
+	//Método Baraja, para crear la baraja completa
+	public void Baraja() {
+				
+		//Con el ciclo for se comienza a hacer toda la baraja.
+		for(int i = 0; i < Palo.length; i++) {
+			for(int j = 0; j < Valor.length; j++) {
+				
+				Card obj1 = new Card();
+				
+				String comparar = Palo[i].equals("Corazon") || Palo[i].equals("Diamante") ? (obj1.COLOR = "Rojo") : (obj1.COLOR = "Negro");
+								
+				obj1.PALO = Palo[i];
+				obj1.VALOR = Valor[j];
+				BarCom.add(obj1);
+				
+			}
+		}	
+	}
+	
+	//Método Tamaño
+	public void Tamaño() {
+	
+		System.out.println("Tamaño de la baraja completa: " + BarCom.size());
+		
+	}
+	
+	//Método Shuffle
+	public void Shuffle() {
+		
+		Collections.shuffle(BarCom);
+		System.out.println("Se mezclo el Deck. ");
+		
+	}
+	
+	//Método Head
+	public void Head() {
+		
+		System.out.println("Carta Numero 1: " + BarCom.get(0).PALO + " " + BarCom.get(0).COLOR + " " + BarCom.get(0).VALOR);
+		BarCom.remove(0);
+		System.out.println("Quedan : " + BarCom.size() + " cartas.");
+		
+	}
+	
+	//Método Pick
+	public void Pick() {
+		
+		//Clase Random.
+		Random aleatorio = new Random();
+		System.out.println("La carta aleatoria es : " + BarCom.get(aleatorio.nextInt(BarCom.size())).PALO + " " + BarCom.get(aleatorio.nextInt(BarCom.size())).COLOR + " " + BarCom.get(aleatorio.nextInt(BarCom.size())).VALOR);
+		BarCom.remove(aleatorio.nextInt(BarCom.size()));
+		System.out.println("Quedan : " + BarCom.size() + " cartas.");
+		
+	}
+	
+	//Método Hand
+	public void Hand() {
+		
+		// Declaración del ArrayList
+		ArrayList<Card> ChicoA = new ArrayList<Card>();
+		
+		System.out.println("Arreglo de 5 cartas:");
+		
+		// Añadimos 5 Elementos en el ArrayList
+		for (int i=0; i<5; i++){
+			
+			ChicoA.add(BarCom.get(i));
+			System.out.println(ChicoA.get(i).PALO + "\t\t" + ChicoA.get(i).COLOR + "\t\t" + ChicoA.get(i).VALOR);
+			BarCom.remove(i);
+		}
+		
+		System.out.println("Quedan : " + BarCom.size() + " cartas.");
+				
+	}
+		
+}
