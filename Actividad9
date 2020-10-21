@@ -1,0 +1,76 @@
+import java.util.*;
+
+//Clase principal Actividad9
+public class Actividad9 {
+	
+	Scanner sc = new Scanner(System.in);
+	
+	//Constructor
+	public Actividad9() {
+		
+	}
+	
+
+	//Método Main
+	public static void main(String[] args) {
+		
+		Actividad9 obj1 = new Actividad9();
+		obj1.showMenu();
+
+	}
+	
+	public void showMenu() {
+		
+		Deck obj1 = new Deck();
+		
+		boolean verdadero;
+		
+		obj1.Baraja();
+		obj1.Tamaño();
+		
+		do {
+			
+			System.out.println("\nBIENVENIDO AL POKER \nSelecciona \n1 para Mezclar Deck \n2 para Sacar una carta \n3 para Carta al azar \n4 para Generar una mano de 5 cartas \n0 Salir");
+			int x = sc.nextInt();
+			
+			switch (x) {
+			
+			case 1:
+				System.out.println("Mezclar Deck ");
+				obj1.Shuffle();
+				verdadero = true;
+				break;
+			
+			case 2:
+				System.out.println("Sacar una carta ");
+				obj1.Head();
+				verdadero = true;
+				break;
+				
+			case 3:
+				System.out.println("Carta al azar ");
+				obj1.Pick();
+				verdadero = true;
+				break;
+				
+			case 4:
+				System.out.println("Generar una mano de 5 cartas ");
+				obj1.Hand();
+				verdadero = true;
+				break;
+				
+			case 0:
+				System.out.println("Salir ");
+				verdadero = false;
+				break;
+				
+			default:
+				System.out.println("Opción no válida, intente de nuevo. ");
+				verdadero = true;
+			}
+		
+		} while(verdadero == true);	
+		
+	}
+
+}
