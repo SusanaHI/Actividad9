@@ -49,27 +49,37 @@ public class Deck {
 	}
 	
 	//Método Head
-	public void Head() {
+	public void Head() throws Exception {
 		
 		System.out.println("Carta Numero 1: " + BarCom.get(0).PALO + " " + BarCom.get(0).COLOR + " " + BarCom.get(0).VALOR);
 		BarCom.remove(0);
-		System.out.println("Quedan : " + BarCom.size() + " cartas.");
+		
+		if(BarCom.size() != 0) {
+			System.out.println("Quedan : " + BarCom.size() + " cartas.");
+		}else {
+			throw new Exception("Se han agotado las cartas.");
+		}
 		
 	}
 	
 	//Método Pick
-	public void Pick() {
+	public void Pick() throws Exception {
 		
 		//Clase Random.
 		Random aleatorio = new Random();
 		System.out.println("La carta aleatoria es : " + BarCom.get(aleatorio.nextInt(BarCom.size())).PALO + " " + BarCom.get(aleatorio.nextInt(BarCom.size())).COLOR + " " + BarCom.get(aleatorio.nextInt(BarCom.size())).VALOR);
 		BarCom.remove(aleatorio.nextInt(BarCom.size()));
-		System.out.println("Quedan : " + BarCom.size() + " cartas.");
+		
+		if(BarCom.size() != 0) {
+			System.out.println("Quedan : " + BarCom.size() + " cartas.");
+		}else {
+			throw new Exception("Se han agotado las cartas.");
+		}
 		
 	}
 	
 	//Método Hand
-	public void Hand() {
+	public void Hand() throws Exception {
 		
 		// Declaración del ArrayList
 		ArrayList<Card> ChicoA = new ArrayList<Card>();
@@ -78,14 +88,17 @@ public class Deck {
 		
 		// Añadimos 5 Elementos en el ArrayList
 		for (int i=0; i<5; i++){
-			
 			ChicoA.add(BarCom.get(i));
 			System.out.println(ChicoA.get(i).PALO + "\t\t" + ChicoA.get(i).COLOR + "\t\t" + ChicoA.get(i).VALOR);
 			BarCom.remove(i);
 		}
 		
-		System.out.println("Quedan : " + BarCom.size() + " cartas.");
-				
+		if(BarCom.size() != 0) {
+			System.out.println("Quedan : " + BarCom.size() + " cartas.");
+		}else {
+			throw new Exception("Se han agotado las cartas.");
+		}
+		
 	}
 		
 }
