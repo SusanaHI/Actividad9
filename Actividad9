@@ -1,12 +1,13 @@
-import java.util.*;
+import java.util.Scanner;
+import java.lang.*;
 
 //Clase principal Actividad9
-public class Actividad9 {
+public class Actividad10 {
 	
 	Scanner sc = new Scanner(System.in);
 	
 	//Constructor
-	public Actividad9() {
+	public Actividad10() {
 		
 	}
 	
@@ -14,63 +15,77 @@ public class Actividad9 {
 	//Método Main
 	public static void main(String[] args) {
 		
-		Actividad9 obj1 = new Actividad9();
+		Actividad10 obj1 = new Actividad10();
 		obj1.showMenu();
-
 	}
 	
 	public void showMenu() {
 		
 		Deck obj1 = new Deck();
 		
-		boolean verdadero;
+		boolean verdadero = true;
 		
 		obj1.Baraja();
 		obj1.Tamaño();
 		
-		do {
-			
+			do {
+				
+			try {
+				
 			System.out.println("\nBIENVENIDO AL POKER \nSelecciona \n1 para Mezclar Deck \n2 para Sacar una carta \n3 para Carta al azar \n4 para Generar una mano de 5 cartas \n0 Salir");
 			int x = sc.nextInt();
 			
-			switch (x) {
-			
-			case 1:
-				System.out.println("Mezclar Deck ");
-				obj1.Shuffle();
-				verdadero = true;
-				break;
-			
-			case 2:
-				System.out.println("Sacar una carta ");
-				obj1.Head();
-				verdadero = true;
-				break;
+			if (x == 0 || x == 1 || x == 2 || x == 3 || x == 4) {
+							
+				switch (x) {
 				
-			case 3:
-				System.out.println("Carta al azar ");
-				obj1.Pick();
-				verdadero = true;
-				break;
+				case 0:
+					System.out.println("Salir ");
+					verdadero = false;
+					break;
 				
-			case 4:
-				System.out.println("Generar una mano de 5 cartas ");
-				obj1.Hand();
-				verdadero = true;
-				break;
+				case 1:
+					System.out.println("Mezclar Deck ");
+					obj1.Shuffle();
+					break;
 				
-			case 0:
-				System.out.println("Salir ");
-				verdadero = false;
-				break;
+				case 2:
+					System.out.println("Sacar una carta ");
+					try{
+						obj1.Head();
+					}catch (Exception e) {
+						System.out.println(e.getMessage());
+						verdadero = false;
+					}
+					break;
+					
+				case 3:
+					System.out.println("Carta al azar ");
+					try{
+						obj1.Pick();
+					}catch (Exception e) {
+						System.out.println(e.getMessage());
+						verdadero = false;
+					}
+					break;
+					
+				case 4:
+					System.out.println("Generar una mano de 5 cartas ");
+					try{
+						obj1.Hand();
+					}catch (Exception e) {
+						System.out.println(e.getMessage());
+						verdadero = false;
+					}
+					break;
+				}
 				
-			default:
-				System.out.println("Opción no válida, intente de nuevo. ");
-				verdadero = true;
+			}else {
+				throw new Exception("Opción no válida, intente de nuevo. ");
 			}
-		
-		} while(verdadero == true);	
-		
+			}catch (Exception e) {
+					System.out.println(e.getMessage());
+			}
+			}while(verdadero == true);				
 	}
-
 }
